@@ -1,14 +1,17 @@
 <Solution>
   <Folder Name="/src/" />
   <Folder Name="/src/Backend/">
+    <Project Path="src/Backend/MyRecipeBook.Api/MyRecipeBook.Api.csproj" />
     <Project Path="src/Backend/MyRecipeBook.Application/MyRecipeBook.Application.csproj" Id="bc829d7e-12b0-4f92-b219-c69524e7e917" />
     <Project Path="src/Backend/MyRecipeBook.Domain/MyRecipeBook.Domain.csproj" Id="2f17ae06-4e18-46dc-aac8-0c4d1f8eb513" />
     <Project Path="src/Backend/MyRecipeBook.Infrastructure/MyRecipeBook.Infrastructure.csproj" Id="e62bd260-f157-4760-917f-e60648f76d7d" />
-    <Project Path="src/Backend/MyRecipeBook.Api/MyRecipeBook.Api.csproj" />
   </Folder>
   <Folder Name="/src/Shared/">
     <Project Path="src/Shared/MyRecipeBook.Communication/MyRecipeBook.Communication.csproj" Id="2cf37cc3-e3cf-4f2c-b6a6-8e203fe7659a" />
     <Project Path="src/Shared/MyRecipeBook.Exception/MyRecipeBook.Exception.csproj" Id="1c6bd2b0-6cc3-4980-9dee-d148b0dedc54" />
   </Folder>
-  <Folder Name="/tests/" />
+  <Folder Name="/tests/">
+    <Project Path="tests/CommonTestUtilities/CommonTestUtilities.csproj" Id="d84e9544-43e3-41bb-a5c7-5f008a317887" />
+    <Project Path="tests/Validators.Tests/Validators.Tests.csproj" Id="0285322f-4515-433b-be3b-88ca8c217be8" />
+  </Folder>
 </Solution>

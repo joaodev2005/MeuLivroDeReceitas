@@ -1,21 +1,23 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MyRecipeBook.Application.UseCases.User.Register;
 using MyRecipeBook.Communication.Requests;
-using MyRecipeBook.Exception.ExceptionsBase;
+using MyRecipeBook.Communication.Responses;
 
 namespace MyRecipeBook.Api.Controllers;
 
-[Route("api/[controller]")]
+[Route("[controller]")]
 [ApiController]
 public class UsersController : ControllerBase
 {
     [HttpPost]
-    public IActionResult Register([FromBody] RequestRegisterUserAccountJson request)
+    [ProducesResponseType(typeof(ResponseRegisteredUserJson), StatusCodes.Status201Created)]
+    [ProducesResponseType(typeof(ResponseErrorJson), StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> Register(
+        [FromBody] RequestRegisterUserAccountJson request, 
+        [FromServices] IRegisterUserAccountUseCase useCase)
     {
-        var useCase = new RegisterUserAccountUseCase();
+        var result = await useCase.Execute(request);
 
-        useCase.Execute(request);
-
-        return Created();
+        return Created(string.Empty, result);
     }
 }
