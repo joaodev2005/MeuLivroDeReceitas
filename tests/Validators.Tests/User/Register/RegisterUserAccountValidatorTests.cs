@@ -1,4 +1,5 @@
-﻿using CommonTestUtilities.Requests;
+﻿using System.Diagnostics.CodeAnalysis;
+using CommonTestUtilities.Requests;
 using MyRecipeBook.Application.UseCases.User.Register;
 using MyRecipeBook.Exception;
 using Shouldly;
@@ -19,14 +20,18 @@ public class RegisterUserAccountValidatorTests
         result.IsValid.ShouldBeTrue();
     }
 
-    [Fact]
-    public void Validate_ShouldHaveError_WhenNameIsEmpty()
+    [Theory]
+    [InlineData("")]
+    [InlineData(null)]
+    [InlineData("        ")]
+    [SuppressMessage("Usage", "xUnit1012:Null should only be used for nullable parameters", Justification = "<Intentional bacause is a unit test>")]
+    public void Validate_ShouldHaveError_WhenNameIsEmpty(string name)
     {
         var request = RequestRegisterUserAccountJsonBuilder.Build();
-        request.Name = string.Empty;
+        request.Name = name;
 
         var validator = new RegisterUserAccountValidator();
-
+        
         var result = validator.Validate(request);
 
         result.IsValid.ShouldBeFalse();
@@ -37,11 +42,16 @@ public class RegisterUserAccountValidatorTests
         });
     }
 
-    [Fact]
-    public void Validate_ShouldHaveError_WhenEmailIsEmpty()
+
+    [Theory]
+    [InlineData("")]
+    [InlineData(null)]
+    [InlineData("        ")]
+    [SuppressMessage("Usage", "xUnit1012:Null should only be used for nullable parameters", Justification = "<Intentional bacause is a unit test>")]
+    public void Validate_ShouldHaveError_WhenEmailIsEmpty(string email)
     {
         var request = RequestRegisterUserAccountJsonBuilder.Build();
-        request.Email = string.Empty;
+        request.Email = email;
 
         var validator = new RegisterUserAccountValidator();
 
