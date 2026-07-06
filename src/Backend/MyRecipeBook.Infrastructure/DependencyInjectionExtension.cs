@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System.Configuration;
+using System.Reflection;
 using FluentMigrator.Runner;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -16,15 +17,16 @@ namespace MyRecipeBook.Infrastructure;
 
 public static class DependencyInjectionExtension
 {
-    extension(IServiceCollection services) 
-    { 
+    extension(IServiceCollection services)
+    {
         public void AddInfrastructure(IConfiguration configuration)
         {
-            services.AddScoped<IPasswordHasher, Argon2PasswordHasher>();
-            services.AddScoped<IUserWriteOnlyRepository, UserRepository>();
-            services.AddScoped<IUserReadOnlyRepository, UserRepository>();
-            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddRepositories();
 
+            services.AddTokensHandlers(configuration);
+
+            services.AddScoped<IPasswordHasher, Argon2PasswordHasher>();
+            
             services.AddDbContext<MyRecipeBookDbContext>(config =>
             {
                 var connectionString = configuration.GetConnectionString("DbConnection")!;
@@ -45,7 +47,17 @@ public static class DependencyInjectionExtension
                 .ScanIn(Assembly.Load("MyRecipeBook.Infrastructure"))
                 .For.All();
             });
+        }
 
+        private void AddRepositories()
+        {
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IUserWriteOnlyRepository, UserRepository>();
+            services.AddScoped<IUserReadOnlyRepository, UserRepository>();
+        }
+
+        private void AddTokensHandlers(IConfiguration configuration)
+        {
             services.AddScoped<IAccessTokenGenerator>(provider =>
             {
                 var expirationTimeInMinutes = configuration.GetValue<uint>("Jwt:ExpirationTimeMinutes");
