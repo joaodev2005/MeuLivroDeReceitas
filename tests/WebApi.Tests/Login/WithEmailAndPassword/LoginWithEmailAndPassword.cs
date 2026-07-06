@@ -1,6 +1,5 @@
 ﻿using System.Globalization;
 using System.Net;
-using System.Net.Http.Json;
 using System.Text.Json;
 using CommonTestUtilities.Requests;
 using MyRecipeBook.Communication.Requests;
@@ -12,16 +11,14 @@ using WebApi.Tests.Resources;
 
 namespace WebApi.Tests.Login.WithEmailAndPassword;
 
-public class LoginWithEmailAndPassword : IClassFixture<MyRecipeBookApplicationFactory>
+public class LoginWithEmailAndPassword : BaseIntegrationTest 
 {
     private const string REQUEST_URI = "/authentication";
 
-    private readonly HttpClient _httpClient;
     private readonly UserIdentifyManager _user1;
 
-    public LoginWithEmailAndPassword(MyRecipeBookApplicationFactory factory)
+    public LoginWithEmailAndPassword(MyRecipeBookApplicationFactory factory) : base(factory)
     {
-        _httpClient = factory.CreateClient();
         _user1 = factory.User1;
     }
 
@@ -34,7 +31,7 @@ public class LoginWithEmailAndPassword : IClassFixture<MyRecipeBookApplicationFa
             Password = _user1.GetPassword()
         };
 
-        var response = await _httpClient.PostAsJsonAsync(REQUEST_URI, request);
+        var response = await Post(REQUEST_URI, request);
 
         response.StatusCode.ShouldBe(HttpStatusCode.OK);
 
@@ -52,10 +49,7 @@ public class LoginWithEmailAndPassword : IClassFixture<MyRecipeBookApplicationFa
     {
         var request = RequestLoginJsonBuilder.Build();
 
-        _httpClient.DefaultRequestHeaders.AcceptLanguage.Clear();
-        _httpClient.DefaultRequestHeaders.AcceptLanguage.ParseAdd(culture);
-
-        var response = await _httpClient.PostAsJsonAsync(REQUEST_URI, request);
+        var response = await Post(REQUEST_URI, request, culture);
 
         response.StatusCode.ShouldBe(HttpStatusCode.Unauthorized);
 
