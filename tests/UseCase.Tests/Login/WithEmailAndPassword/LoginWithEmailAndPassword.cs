@@ -7,7 +7,6 @@ using MyRecipeBook.Domain.Extensions;
 using MyRecipeBook.Exception;
 using MyRecipeBook.Exception.ExceptionsBase;
 using Shouldly;
-using Xunit.Sdk;
 
 namespace UseCase.Tests.Login.WithEmailAndPassword;
 
@@ -16,7 +15,8 @@ public class LoginWithEmailAndPassword
     [Fact]
     public async Task Success()
     {
-        var user = UserBuilder.Build();
+        var (user, _) = UserBuilder.Build();
+
         var request = RequestLoginJsonBuilder.Build();
         request.Email = user.Email;
 
@@ -39,6 +39,9 @@ public class LoginWithEmailAndPassword
         var useCase = CreateUseCase();
 
         var exception = await useCase.Execute(request).ShouldThrowAsync<InvalidLoginException>();
+
+        exception.GetStatusCode().ShouldBe(System.Net.HttpStatusCode.Unauthorized);
+
         exception.GetErrorMessages().ShouldSatisfyAllConditions(errorMessages =>
         {
             errorMessages.Count.ShouldBe(1);
@@ -49,7 +52,8 @@ public class LoginWithEmailAndPassword
     [Fact]
     public async Task ShouldTrhowException_WhenPasswordIsIncorrect()
     {
-        var user = UserBuilder.Build();
+        var (user, _) = UserBuilder.Build();
+
         var request = RequestLoginJsonBuilder.Build();
         request.Email = user.Email;
 
