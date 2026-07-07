@@ -6,11 +6,14 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi;
 using MyRecipeBook.Api.Converters;
 using MyRecipeBook.Api.Filters;
+using MyRecipeBook.Api.Token;
 using MyRecipeBook.Application;
 using MyRecipeBook.Communication.Responses;
 using MyRecipeBook.Domain.Repositories.User;
+using MyRecipeBook.Domain.Security.Tokens;
 using MyRecipeBook.Exception;
 using MyRecipeBook.Infrastructure;
 using MyRecipeBook.Infrastructure.Migrations;
@@ -19,10 +22,36 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers().AddJsonOptions(options => options.JsonSerializerOptions.Converters.Add(new StringConverter()));
 builder.Services.AddOpenApi();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(options =>
+{
+    options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+    {
+        Name = "Authorization",
+        Description = "Enter only your access token",
+        In = ParameterLocation.Header,
+        Type = SecuritySchemeType.Http,
+        Scheme = "bearer",
+        BearerFormat = "JWT"
+    });
+
+    options.AddSecurityRequirement(OpenApiDocument =>
+    {
+        return new OpenApiSecurityRequirement
+        {
+            {
+                new OpenApiSecuritySchemeReference("Bearer", OpenApiDocument),
+                []
+            }
+        };
+    });
+});
 
 builder.Services.AddApplication();
 builder.Services.AddInfrastructure(builder.Configuration);
+
+builder.Services.AddScoped<IAccessTokenProvider, HttpContextTokenProvider>();
+
+builder.Services.AddHttpContextAccessor();
 
 builder.Services.Configure<RequestLocalizationOptions>(options =>
 {
