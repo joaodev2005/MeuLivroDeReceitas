@@ -120,6 +120,9 @@
   <data name="UNKNOWN_ERROR" xml:space="preserve">
     <value>Erro desconhecido</value>
   </data>
+  <data name="VALIDATION_ACCESS_TOKEN_REQUIRED" xml:space="preserve">
+    <value>Oops! Esta requisição precisa de um access token</value>
+  </data>
   <data name="VALIDATION_EMAIL_ALREADY_EXISTS" xml:space="preserve">
     <value>Oops! Este e-mail ja esta em uso</value>
   </data>
@@ -130,12 +133,15 @@
     <value>Oops! O email é obrigatorio</value>
   </data>
   <data name="VALIDATION_LOGIN_INVALID" xml:space="preserve">
-    <value>Oops! L'email ou le mot de passe est invalide.</value>
+    <value>Oops! Email ou senha invalidos</value>
   </data>
   <data name="VALIDATION_NAME_REQUIRED" xml:space="preserve">
     <value>Oops! O nome é obrigatoria</value>
   </data>
   <data name="VALIDATION_PASSWORD_REQUIRED" xml:space="preserve">
     <value>Oops! A senha é obrigatorio</value>
+  </data>
+  <data name="VALIDATION_RESOURCE_ACCESS_DENIED" xml:space="preserve">
+    <value>Oops! Voce nao tem acesso a este recurso</value>
   </data>
 </root>
