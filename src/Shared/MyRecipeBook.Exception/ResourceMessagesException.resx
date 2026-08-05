@@ -123,8 +123,20 @@
   <data name="VALIDATION_ACCESS_TOKEN_REQUIRED" xml:space="preserve">
     <value>Oops! This request needs an access token.</value>
   </data>
+  <data name="VALIDATION_AT_LEAST_ONE_INGREDIENT" xml:space="preserve">
+    <value>Oops! Selected at least one ingredient</value>
+  </data>
+  <data name="VALIDATION_AT_LEAST_ONE_INSTRUCTION" xml:space="preserve">
+    <value>Oops! Provide at least one instruction.</value>
+  </data>
+  <data name="VALIDATION_COOK_TIME_INVALID" xml:space="preserve">
+    <value>Oops! The selected cook time is not valid</value>
+  </data>
   <data name="VALIDATION_CURRENT_PASSWORD" xml:space="preserve">
     <value>The current password is incorrect</value>
+  </data>
+  <data name="VALIDATION_DISH_TYPE_INVALID" xml:space="preserve">
+    <value>Oops! The selected dish type is not valid</value>
   </data>
   <data name="VALIDATION_EMAIL_ALREADY_EXISTS" xml:space="preserve">
     <value>Oops! This emails is already in use</value>
@@ -134,6 +146,21 @@
   </data>
   <data name="VALIDATION_EMAIL_REQUIRED" xml:space="preserve">
     <value>Oops! Email is required</value>
+  </data>
+  <data name="VALIDATION_INGREDIENT_EMPTY" xml:space="preserve">
+    <value>Oops! The ingredient can't be empty or null</value>
+  </data>
+  <data name="VALIDATION_INGREDIENT_MAX_LENGTH" xml:space="preserve">
+    <value>Oops! Maximum ingredient length exceeded.</value>
+  </data>
+  <data name="VALIDATION_INSTRUCTION_DESCRIPTION_MAX_LENGTH" xml:space="preserve">
+    <value>Oops! Maximum instruction description length exceeded.</value>
+  </data>
+  <data name="VALIDATION_INSTRUCTION_DESCRIPTION_REQUIRED" xml:space="preserve">
+    <value>Oops! Instruction description is required.</value>
+  </data>
+  <data name="VALIDATION_INSTRUCTION_ORDER_INVALID" xml:space="preserve">
+    <value>Oops! The instruction order is invalid.</value>
   </data>
   <data name="VALIDATION_LOGIN_INVALID" xml:space="preserve">
     <value>ops! Email or password is invalid.</value>
@@ -149,5 +176,11 @@
   </data>
   <data name="VALIDATION_RESOURCE_ACCESS_DENIED" xml:space="preserve">
     <value>Oops! You don't have access to this resource</value>
+  </data>
+  <data name="VALIDATION_TITLE_MAX_LENGTH" xml:space="preserve">
+    <value>Oops! Title must be at most 250 characters long</value>
+  </data>
+  <data name="VALIDATION_TITLE_REQUIRED" xml:space="preserve">
+    <value>Oops! Title is required</value>
   </data>
 </root>

@@ -123,8 +123,20 @@
   <data name="VALIDATION_ACCESS_TOKEN_REQUIRED" xml:space="preserve">
     <value>Oops! Esta requisição precisa de um access token</value>
   </data>
+  <data name="VALIDATION_AT_LEAST_ONE_INGREDIENT" xml:space="preserve">
+    <value>Oops! Selecione pelo menos um ingrediente</value>
+  </data>
+  <data name="VALIDATION_AT_LEAST_ONE_INSTRUCTION" xml:space="preserve">
+    <value>Oops! Informe pelo menos uma instrução.</value>
+  </data>
+  <data name="VALIDATION_COOK_TIME_INVALID" xml:space="preserve">
+    <value>Oops! O tempo de preparo selecionado nao e valido</value>
+  </data>
   <data name="VALIDATION_CURRENT_PASSWORD" xml:space="preserve">
     <value>A senha atual informada esta incorreta</value>
+  </data>
+  <data name="VALIDATION_DISH_TYPE_INVALID" xml:space="preserve">
+    <value>Oops! O tipo de prato selecionado nao e valido</value>
   </data>
   <data name="VALIDATION_EMAIL_ALREADY_EXISTS" xml:space="preserve">
     <value>Oops! Este e-mail ja esta em uso</value>
@@ -134,6 +146,21 @@
   </data>
   <data name="VALIDATION_EMAIL_REQUIRED" xml:space="preserve">
     <value>Oops! O email é obrigatorio</value>
+  </data>
+  <data name="VALIDATION_INGREDIENT_EMPTY" xml:space="preserve">
+    <value>Oops! O nome do ingrediente nao pode ser vazio ou nulo</value>
+  </data>
+  <data name="VALIDATION_INGREDIENT_MAX_LENGTH" xml:space="preserve">
+    <value>Oops! Tamanho máximo do ingrediente excedido.</value>
+  </data>
+  <data name="VALIDATION_INSTRUCTION_DESCRIPTION_MAX_LENGTH" xml:space="preserve">
+    <value>Oops! Tamanho máximo da descrição da instrução excedido.</value>
+  </data>
+  <data name="VALIDATION_INSTRUCTION_DESCRIPTION_REQUIRED" xml:space="preserve">
+    <value>Oops! A descrição da instrução é obrigatória.</value>
+  </data>
+  <data name="VALIDATION_INSTRUCTION_ORDER_INVALID" xml:space="preserve">
+    <value>Oops! A ordem das instruções é inválida.</value>
   </data>
   <data name="VALIDATION_LOGIN_INVALID" xml:space="preserve">
     <value>Oops! Email ou senha invalidos</value>
@@ -149,5 +176,11 @@
   </data>
   <data name="VALIDATION_RESOURCE_ACCESS_DENIED" xml:space="preserve">
     <value>Oops! Voce nao tem acesso a este recurso</value>
+  </data>
+  <data name="VALIDATION_TITLE_MAX_LENGTH" xml:space="preserve">
+    <value>Oops! O titulo deve ter pelo menos 250 carateres</value>
+  </data>
+  <data name="VALIDATION_TITLE_REQUIRED" xml:space="preserve">
+    <value>Oops! Titulo e obrigatorio</value>
   </data>
 </root>
