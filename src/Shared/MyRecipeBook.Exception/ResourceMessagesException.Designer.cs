@@ -79,6 +79,15 @@ namespace MyRecipeBook.Exception {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Oops! Select at least one dish type..
+        /// </summary>
+        public static string VALIDATION_AT_LEAST_ONE_DISH_TYPE {
+            get {
+                return ResourceManager.GetString("VALIDATION_AT_LEAST_ONE_DISH_TYPE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Oops! Selected at least one ingredient.
         /// </summary>
         public static string VALIDATION_AT_LEAST_ONE_INGREDIENT {
@@ -183,6 +192,15 @@ namespace MyRecipeBook.Exception {
         public static string VALIDATION_INSTRUCTION_DESCRIPTION_REQUIRED {
             get {
                 return ResourceManager.GetString("VALIDATION_INSTRUCTION_DESCRIPTION_REQUIRED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Oops! Duplicate instruction order..
+        /// </summary>
+        public static string VALIDATION_INSTRUCTION_DUPLICATE_ORDER {
+            get {
+                return ResourceManager.GetString("VALIDATION_INSTRUCTION_DUPLICATE_ORDER", resourceCulture);
             }
         }
         

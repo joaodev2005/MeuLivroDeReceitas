@@ -20,6 +20,10 @@ public class RecipeValidator : AbstractValidator<RequestRecipeJson>
             .WithMessage(ResourceMessagesException.VALIDATION_COOK_TIME_INVALID);
 
         RuleFor(recipe => recipe.DishTypes)
+            .NotEmpty()
+            .WithMessage(ResourceMessagesException.VALIDATION_AT_LEAST_ONE_DISH_TYPE);
+
+        RuleForEach(recipe => recipe.DishTypes)
             .IsInEnum()
             .WithMessage(ResourceMessagesException.VALIDATION_DISH_TYPE_INVALID);
 
@@ -38,13 +42,18 @@ public class RecipeValidator : AbstractValidator<RequestRecipeJson>
             .NotEmpty()
             .WithMessage(ResourceMessagesException.VALIDATION_AT_LEAST_ONE_INSTRUCTION);
 
+        RuleFor(recipe => recipe.Instructions)
+            .Must(instructions => instructions.Select(instruction => instruction.Order).Distinct().Count() == instructions.Count)
+            .WithMessage(ResourceMessagesException.VALIDATION_INSTRUCTION_DUPLICATE_ORDER)
+            .When(recipe => recipe.Instructions.Count > 1);
+
         RuleForEach(recipe => recipe.Instructions).ChildRules(instruction =>
         {
             instruction.RuleFor(item => item.Order)
                 .GreaterThan(0)
                 .WithMessage(ResourceMessagesException.VALIDATION_INSTRUCTION_ORDER_INVALID);
 
-            instruction.RuleFor(i => i.Description)
+            instruction.RuleFor(item => item.Description)
                 .Cascade(CascadeMode.Stop)
                 .NotEmpty()
                 .WithMessage(ResourceMessagesException.VALIDATION_INSTRUCTION_DESCRIPTION_REQUIRED)

@@ -123,6 +123,9 @@
   <data name="VALIDATION_ACCESS_TOKEN_REQUIRED" xml:space="preserve">
     <value>Oops! This request needs an access token.</value>
   </data>
+  <data name="VALIDATION_AT_LEAST_ONE_DISH_TYPE" xml:space="preserve">
+    <value>Oops! Select at least one dish type.</value>
+  </data>
   <data name="VALIDATION_AT_LEAST_ONE_INGREDIENT" xml:space="preserve">
     <value>Oops! Selected at least one ingredient</value>
   </data>
@@ -158,6 +161,9 @@
   </data>
   <data name="VALIDATION_INSTRUCTION_DESCRIPTION_REQUIRED" xml:space="preserve">
     <value>Oops! Instruction description is required.</value>
+  </data>
+  <data name="VALIDATION_INSTRUCTION_DUPLICATE_ORDER" xml:space="preserve">
+    <value>Oops! Duplicate instruction order.</value>
   </data>
   <data name="VALIDATION_INSTRUCTION_ORDER_INVALID" xml:space="preserve">
     <value>Oops! The instruction order is invalid.</value>
