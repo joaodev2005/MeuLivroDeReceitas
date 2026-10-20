@@ -16,7 +16,7 @@ internal static class MapsterConfiguration
             .NewConfig()
             .Map(destination => destination.Ingredients, request => request.Ingredients.Select(ingredient => new RecipeIngredient
             {
-                ItemName = ingredient
+                Item = ingredient
             }))
             .Map(destination => destination.DishTypes, request => request.DishTypes.Select(dishType => new RecipeDishType
             {
