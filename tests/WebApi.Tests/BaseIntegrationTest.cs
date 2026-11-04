@@ -25,6 +25,7 @@ public abstract class BaseIntegrationTest : IClassFixture<MyRecipeBookApplicatio
     protected async Task<HttpResponseMessage> Post(string requestUri, object request, string accessToken = "", string culture = "en-US")
     {
         ChangeRequestCulture(culture);
+        AuthorizeRequest(accessToken);
 
         return await _httpClient.PostAsJsonAsync(requestUri, request);
     }

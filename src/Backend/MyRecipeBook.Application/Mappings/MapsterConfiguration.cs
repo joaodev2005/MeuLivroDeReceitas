@@ -1,7 +1,9 @@
-﻿using Mapster;
+﻿using System.Runtime.CompilerServices;
+using Mapster;
 using MyRecipeBook.Communication.Requests;
 using MyRecipeBook.Domain.Entities;
 
+[assembly: InternalsVisibleTo("UseCase.Tests")]
 namespace MyRecipeBook.Application.Mappings;
 
 internal static class MapsterConfiguration
@@ -21,6 +23,11 @@ internal static class MapsterConfiguration
             .Map(destination => destination.DishTypes, request => request.DishTypes.Select(dishType => new RecipeDishType
             {
                 Type = (Domain.Enums.DishType)dishType
+            }))
+            .Map(destination => destination.Instructions, request => request.Instructions.Select(instruction => new RecipeInstruction
+            {
+                Order = instruction.Order,
+                Description = instruction.Description
             }));
     }
 }

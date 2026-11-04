@@ -1,4 +1,5 @@
 ﻿using Mapster;
+using MyRecipeBook.Application.Mappings;
 using MyRecipeBook.Communication.Requests;
 using MyRecipeBook.Communication.Responses;
 using MyRecipeBook.Domain.Identity;
