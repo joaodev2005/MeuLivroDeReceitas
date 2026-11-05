@@ -1,6 +1,7 @@
 ﻿using System.Runtime.CompilerServices;
 using Mapster;
 using MyRecipeBook.Communication.Requests;
+using MyRecipeBook.Communication.Responses;
 using MyRecipeBook.Domain.Entities;
 
 [assembly: InternalsVisibleTo("UseCase.Tests")]
@@ -29,5 +30,10 @@ internal static class MapsterConfiguration
                 Order = instruction.Order,
                 Description = instruction.Description
             }));
+
+        TypeAdapterConfig<Recipe, ResponseRecipeJson>
+            .NewConfig()
+            .Map(destination => destination.Ingredients, entity => entity.Ingredients.Select(ingredient => ingredient.Item))
+            .Map(destination => destination.DishTypes, entity => entity.DishTypes.Select(dishType => dishType.Type ));
     }
 }

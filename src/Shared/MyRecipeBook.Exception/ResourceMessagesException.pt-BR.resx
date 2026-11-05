@@ -180,6 +180,9 @@
   <data name="VALIDATION_PASSWORD_REQUIRED" xml:space="preserve">
     <value>Oops! A senha é obrigatorio</value>
   </data>
+  <data name="VALIDATION_RECIPE_NOT_FOUND" xml:space="preserve">
+    <value>Ops! Não conseguimos encontrar esta receita</value>
+  </data>
   <data name="VALIDATION_RESOURCE_ACCESS_DENIED" xml:space="preserve">
     <value>Oops! Voce nao tem acesso a este recurso</value>
   </data>

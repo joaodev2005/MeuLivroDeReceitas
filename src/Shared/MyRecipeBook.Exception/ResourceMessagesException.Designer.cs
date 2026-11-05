@@ -214,7 +214,7 @@ namespace MyRecipeBook.Exception {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a ops! Email or password is invalid..
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Oops! Email or password is invalid..
         /// </summary>
         public static string VALIDATION_LOGIN_INVALID {
             get {
@@ -246,6 +246,15 @@ namespace MyRecipeBook.Exception {
         public static string VALIDATION_PASSWORD_REQUIRED {
             get {
                 return ResourceManager.GetString("VALIDATION_PASSWORD_REQUIRED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Oops! We couldn&apos;t find this recipe.
+        /// </summary>
+        public static string VALIDATION_RECIPE_NOT_FOUND {
+            get {
+                return ResourceManager.GetString("VALIDATION_RECIPE_NOT_FOUND", resourceCulture);
             }
         }
         
